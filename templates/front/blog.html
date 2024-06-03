@@ -1,0 +1,69 @@
+{% extends 'front/base.html' %}
+{% block content %}
+    <main class="main__content_wrapper">
+        <div class="inner__page--content__style3">
+            <div class="page__content--style3__padding">
+                <div class="page__heading style3">
+                    <h1 class="page__heading--title">BLOG</h1>
+                    <h2 class="page__heading--subtitle">BLOG</h2> 
+                </div>
+        
+                <!-- Start blog section -->
+                <div class="blog__section section--padding">
+                    <div class="blog__section--inner">
+                        <div class="row mb--n30">
+                            {% for blog in blogs %}
+                            <div class="col-lg-4 col-md-6 col-sm-6 mb-30">
+                                <article class="blog__card">
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#blogModal{{forloop.counter}}">
+                                        <div class="blog__card--thumbnail" >
+                                            <img src="{{blog.image.url}}" alt="img">
+                                        </div>
+                                        <div class="blog__card--content">
+                                            <span class="blog__card--tag">{{blog.tag}}</span>
+                                            <h3 class="blog__card--title mb-12">{{blog.title}}</h3>
+                                         </div>
+                                    </a>
+                                </article>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <!-- End blog section -->
+            </div>
+        </div>
+
+    </main>
+    {% for blog in blogs %}
+    <div class="modal fade" id="blogModal{{forloop.counter}}" tabindex="-1" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered portfolio__modal--dialog">
+          <div class="modal-content modal-content-height">
+            <button type="button" class="btn-close portfolio__modal--colse" data-bs-dismiss="modal" aria-label="Close">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+            <div class="modal-body portfolio__modal--body">
+                <h2 class="portfolio__modal--title text-center mb-30">{{blog.title}}</h2>
+                <div class="portfolio__modal--info d-flex align-items-center mb-20">
+                    <div class="portfolio__modal--info--list">
+                       
+                        <p class="portfolio__modal--info--text">
+                            <span class="portfolio__modal--info__icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-code"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></span>
+                            Turkum :
+                            <span class="portfolio__modal--info__name">{{blog.tag}}</span>
+                        </p>
+                    
+                    </div>
+                 
+                </div>
+                <p class="portfolio__modal--info__desc mb-30">
+                    {{blog.description}}</p>
+                <div class="portfolio__modal--info__media">
+                    <img src="{{blog.image.url}}" alt="img">
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock %}

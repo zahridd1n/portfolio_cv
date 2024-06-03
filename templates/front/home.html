@@ -1,0 +1,47 @@
+{% extends 'front/base.html' %}
+{% block content %}
+    <main class="main__content_wrapper style3">
+        <!-- Start slider section -->
+        <div class="hero__section hero__section--style3">
+            <div class="hero__section--style3__inner d-flex align-items-center">
+                <div class="hero__thumbnail position__relative">
+                    <img class="hero__thumbnail--media light_img" src="{{ home.image.url }}" style="border-radius: 5px; box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.5);" alt="img">
+                    <img class="hero__thumbnail--media dark_img" src="{{ home.image.url }}" style="border-radius: 5px; box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.5);" alt="img">
+                    
+                    <span class="logo__positioning one">
+                        <img src="{{ home.icon1.url }}" style="border-radius: 12px;border:1px solid #EE5F38;" alt="logo">
+                    </span>
+                    <span class="logo__positioning two">
+                        <img src="{{ home.icon2.url }}" style="border-radius:12px; border:1px solid #EE5F38;" alt="logo">
+                    </span>
+                </div>
+                <div class="hero__content">
+                    <span class="hero__content--subtitle text__secondary mb-10">Salom  Men</span>
+                    <h2 class="hero__content--title mb-15">{{aboutme.first_name}} {{aboutme.last_name}}! </h2>
+                    <h3 class="hero__content--subtitle2 mb-20">{{home.title}} </h3>
+                    <p class="hero__content--desc mb-30">{{home.description}}</p>
+                    <a class="primary__btn download__btn mb-30" href="{% url 'download_cv' %}">
+                        <svg class="download__btn--svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        Download CV
+                    </a>
+                    <div class="social__share d-flex align-items-center">
+                        <span class="social__share--title">Follow Me: </span>
+                        <ul class="social__share--wrapper d-flex">
+                            {% for s in social %}
+                            <li class="social__share--child"><a class="social__share--link" target="_blank" href="{{s.url}}">
+                                <img src="{{s.image.url}}" style="width: 20px; height: 20px;" alt="">
+                                  <span class="visually-hidden">Instagram</span>
+                                </a>
+                            </li>
+                            {% endfor %}
+                        
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End slider section -->
+
+
+    </main>
+    {% endblock %}

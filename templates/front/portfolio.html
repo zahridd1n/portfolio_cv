@@ -1,0 +1,84 @@
+{% extends 'front/base.html' %}
+{% block content %}
+    <main class="main__content_wrapper">
+        <div class="inner__page--content__style3">
+            <div class="page__content--style3__padding">
+                <div class="page__heading style3">
+                    <h1 class="page__heading--title">MY PORTFOLIO</h1>
+                    <h2 class="page__heading--subtitle">MY <span>PORTFOLIO</span></h2> 
+                </div>
+        
+                 <!-- Start portfolio section -->
+                 <section class="portfolio__section portfolio__style2 section--padding">
+                    <div class="container">
+                        <div class="portfolio__section--inner">
+                            <div class="button-group filters-button-group mb-50">
+                                <button class="filters__button--items button is-checked" data-filter="*">Show All</button>
+                                <button class="filters__button--items button" data-filter=".web">Web</button>
+                                <button class="filters__button--items button" data-filter=".development">Development</button>
+                                <button class="filters__button--items button" data-filter=".mobile">Mobile</button>
+                            </div>
+                            <div class="portfolio__grid mb--n30">
+                                {% for portfolio in portfolios %}
+                                <div class="element-item web" data-category="web">
+                                    <div class="portfolio__card">
+                                        <a href="#" class="popup-modal--open display-block" data-bs-toggle="modal" data-bs-target="#portfolioModal{{forloop.counter}}">
+                                            <div class="portfolio__image--card">
+                                            <img src="{{portfolio.image.url}}" alt="img">
+                                            </div>
+                                            <div class="portfolio__content">
+                                                <span class="portfolio__zoom text-white">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-maximize"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+                                                </span>
+                                                <h3 class="portfolio__title text-white">{{portfolio.title}}</h3>
+                                                </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                   
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- End portfolio section -->
+            </div>
+        </div>
+
+    </main>
+    {% for portfolio in portfolios %}
+    <div class="modal fade" id="portfolioModal{{forloop.counter}}" tabindex="-1" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered portfolio__modal--dialog">
+          <div class="modal-content modal-content-height">
+            <button type="button" class="btn-close portfolio__modal--colse" data-bs-dismiss="modal" aria-label="Close">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+            <div class="modal-body portfolio__modal--body">
+                <h2 class="portfolio__modal--title text-center mb-30">{{portfolio.title}}</h2>
+                <div class="portfolio__modal--info d-flex align-items-center mb-20">
+                    <div class="portfolio__modal--info--list">
+                       
+                        <p class="portfolio__modal--info--text">
+                            <span class="portfolio__modal--info__icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-code"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg></span>
+                            Languages :
+                            <span class="portfolio__modal--info__name">{{portfolio.language}}</span>
+                        </p>
+                        <p class="portfolio__modal--info--text">
+                            <span class="portfolio__modal--info__icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></span>
+                            Ko'rish :
+                            <a class="portfolio__modal--info__name" href="{{portfolio.url}}" target="_blank" rel="noopener noreferrer">{{portfolio.url}}</a>
+                        </p>
+                    </div>
+                 
+                </div>
+                <p class="portfolio__modal--info__desc mb-30">
+                    {{portfolio.body}}</p>
+                <div class="portfolio__modal--info__media">
+                    <img src="{{portfolio.image.url}}" alt="img">
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock %}

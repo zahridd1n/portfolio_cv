@@ -1,0 +1,101 @@
+{% extends 'front/base.html' %}
+{% block content %}
+    <main class="main__content_wrapper">
+        <div class="inner__page--content__style3">
+            <div class="page__content--style3__padding">
+                <div class="page__heading style3">
+                    <h1 class="page__heading--title">MY SERVICES</h1>
+                    <h2 class="page__heading--subtitle">MY <span>SERVICES</span></h2> 
+                </div>
+        
+                <!-- Start services section -->
+                <section class="services__section section--padding">
+                    <div class="services__section--inner">
+                        <div class="row mb--n30">
+                            {% for service in services %}
+                                {% if forloop.counter == 1 %}
+                                    <div class="col-lg-4 col-md-6 col-sm-6 mb-30">
+                                        <div class="services__card">
+                                            <span class="services__card--icon color1 mb-25">
+                                            <i class="{{service.icon}} fa-2xl"></i>
+                                            </span>
+                                            <div class="services__card--content">
+                                                <h3 class="services__card--title mb-15">{{service.title}}</h3>
+                                                <p class="services__card--desc mb-20">{{service.body}}</p>
+                                                <a class="services__card--link color1" href="#">Read More</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% elif forloop.counter == 2 %}
+                                    <div class="col-lg-4 col-md-6 col-sm-6 mb-30">
+                                        <div class="services__card">
+                                            <span class="services__card--icon color2 mb-25">
+                                            <i class="{{service.icon}} fa-2xl"></i>
+                                            </span>
+                                            <div class="services__card--content">
+                                                <h3 class="services__card--title mb-15">{{service.title}}</h3>
+                                                <p class="services__card--desc mb-20">{{service.body}}</p>
+                                                <a class="services__card--link color2" href="#">Read More</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    <div class="col-lg-4 col-md-6 col-sm-6 mb-30">
+                                        <div class="services__card">
+                                            <span class="services__card--icon color3 mb-25">
+                                            <i class="{{service.icon}} fa-2xl"></i>
+                                            </span>
+                                            <div class="services__card--content">
+                                                <h3 class="services__card--title mb-15">{{service.title}}</h3>
+                                                <p class="services__card--desc mb-20">{{service.body}}</p>
+                                                <a class="services__card--link color3" href="#">Read More</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </section>
+                <!-- End services section -->
+
+                <!-- Start Fun facts section -->
+                <!-- <section class="funfacts__section section--padding pt-0">
+                    <div class="funfacts__section--inner d-flex justify-content-between" id="funfactId">
+                        <div class="funfacts__items text-center">
+                            <div class="funfacts__count">
+                                <span class="js-counter funfacts__count--number" data-count="10">10</span>
+                                <span class="funfacts__plus--icon">+</span>
+                            </div>
+                            <h3 class="funfacts__title">Years of Experience</h3>
+                        </div>
+                        <div class="funfacts__items text-center">
+                            <div class="funfacts__count">
+                                <span class="js-counter funfacts__count--number" data-count="15">15</span>
+                                <span class="funfacts__plus--icon">+</span>
+                            </div>
+                            <h3 class="funfacts__title">Satisfied Clients</h3>
+                        </div>
+                        <div class="funfacts__items text-center">
+                            <div class="funfacts__count">
+                                <span class="js-counter funfacts__count--number" data-count="45">45</span>
+                                <span class="funfacts__plus--icon">+</span>
+                            </div>
+                            <h3 class="funfacts__title">Success Project</h3>
+                        </div>
+                        <div class="funfacts__items text-center">
+                            <div class="funfacts__count">
+                                <span class="js-counter funfacts__count--number" data-count="10">10</span>
+                                <span class="funfacts__plus--icon">+</span>
+                            </div>
+                            <h3 class="funfacts__title">Award Gained</h3>
+                        </div>
+                    </div>
+                </section> -->
+                <!-- End Fun facts section -->
+
+ 
+        </div>
+
+    </main>
+    {% endblock %}
